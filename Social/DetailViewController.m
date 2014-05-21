@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "Contact.h"
 
 @interface DetailViewController ()
 
@@ -21,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addSocialButtonPressed;
 
+@property NSData *tempImageData;
+
 @end
 
 @implementation DetailViewController
@@ -33,6 +36,7 @@
         _detailItem = newDetailItem;
         
         // Update the view.
+        [self configureView];
     }
 }
 
@@ -40,7 +44,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.addressLabel.text = @"Hello World!";
+    [self configureView];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +55,17 @@
 }
 
 
+- (void) configureView
+{
+    Contact *contact = self.detailItem;
+    
+    self.firstNameField.text = contact.firstName;
+    self.lastNameField.text = contact.lastName;
+    self.addressLabel.text = contact.address;
+    self.imageURLField.text = contact.imageURL;
+    self.imageView.image = [UIImage imageWithData:contact.image];
+}
+
 
 #pragma mark - Table View Delegate Methods
 
@@ -57,8 +73,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SocialCell"];
     
-    cell.textLabel.text = @"Hello";
+    Contact *contact = self.detailItem;
     
+    cell.textLabel.text = contact.firstName;
+    cell.detailTextLabel.text = contact.lastName;
     return cell;
     
 }
@@ -74,8 +92,43 @@
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    if(textField == self.imageURLField){
+        NSURL *imgURL = [NSURL URLWithString:self.imageURLField.text];
+        
+        dispatch_queue_t background = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(background, ^{
+            UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
+            NSData *imgData = [NSData dataWithContentsOfURL:imgURL];
+            UIImage *image = [UIImage imageWithData:imgData];
+            self.tempImageData = imgData;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.imageView.image = image;
+                UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+            });
+        });
+        
+        [textField resignFirstResponder];
+    }
+    else{
+        [textField resignFirstResponder];
+    }
     return YES;
 }
 
+
+
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    // Should do this in the MasterViewController. Call a delegate method for it.
+    Contact *contact = self.detailItem;
+    contact.firstName = self.firstNameField.text;
+    contact.lastName = self.lastNameField.text;
+    contact.address = self.addressLabel.text;
+    contact.imageURL = self.imageURLField.text;
+    contact.image = self.tempImageData;
+    
+    NSError *error;
+    [self.context save:&error];
+}
 @end

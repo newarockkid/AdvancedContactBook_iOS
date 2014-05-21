@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) id detailItem;
 
+@property NSManagedObjectContext *context;
+
 @end

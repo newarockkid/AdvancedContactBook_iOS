@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		195A8498192C611100BE1C51 /* SocialMediaAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A8497192C611100BE1C51 /* SocialMediaAccount.m */; };
+		195A8499192C611100BE1C51 /* SocialMediaAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A8497192C611100BE1C51 /* SocialMediaAccount.m */; };
+		195A849C192C611200BE1C51 /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849B192C611200BE1C51 /* TimelineEntry.m */; };
+		195A849D192C611200BE1C51 /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849B192C611200BE1C51 /* TimelineEntry.m */; };
+		195A84A0192C611200BE1C51 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849F192C611200BE1C51 /* Contact.m */; };
+		195A84A1192C611200BE1C51 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849F192C611200BE1C51 /* Contact.m */; };
 		19CD3B6E19283FAB00ADD677 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B6D19283FAB00ADD677 /* Foundation.framework */; };
 		19CD3B7019283FAB00ADD677 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B6F19283FAB00ADD677 /* CoreGraphics.framework */; };
 		19CD3B7219283FAB00ADD677 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B7119283FAB00ADD677 /* UIKit.framework */; };
@@ -38,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		195A8496192C611100BE1C51 /* SocialMediaAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMediaAccount.h; sourceTree = "<group>"; };
+		195A8497192C611100BE1C51 /* SocialMediaAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaAccount.m; sourceTree = "<group>"; };
+		195A849A192C611200BE1C51 /* TimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEntry.h; sourceTree = "<group>"; };
+		195A849B192C611200BE1C51 /* TimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEntry.m; sourceTree = "<group>"; };
+		195A849E192C611200BE1C51 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		195A849F192C611200BE1C51 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		19CD3B6A19283FAB00ADD677 /* Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CD3B6D19283FAB00ADD677 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		19CD3B6F19283FAB00ADD677 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,6 +144,12 @@
 				19CD3B8B19283FAB00ADD677 /* DetailViewController.m */,
 				19CD3B8D19283FAB00ADD677 /* Images.xcassets */,
 				19CD3B8419283FAB00ADD677 /* Social.xcdatamodeld */,
+				195A849E192C611200BE1C51 /* Contact.h */,
+				195A849F192C611200BE1C51 /* Contact.m */,
+				195A849A192C611200BE1C51 /* TimelineEntry.h */,
+				195A849B192C611200BE1C51 /* TimelineEntry.m */,
+				195A8496192C611100BE1C51 /* SocialMediaAccount.h */,
+				195A8497192C611100BE1C51 /* SocialMediaAccount.m */,
 				19CD3B7619283FAB00ADD677 /* Supporting Files */,
 			);
 			path = Social;
@@ -263,11 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195A84A0192C611200BE1C51 /* Contact.m in Sources */,
 				19CD3B8C19283FAB00ADD677 /* DetailViewController.m in Sources */,
 				19CD3B8919283FAB00ADD677 /* MasterViewController.m in Sources */,
+				195A849C192C611200BE1C51 /* TimelineEntry.m in Sources */,
 				19CD3B8619283FAB00ADD677 /* Social.xcdatamodeld in Sources */,
 				19CD3B8019283FAB00ADD677 /* AppDelegate.m in Sources */,
 				19CD3B7C19283FAB00ADD677 /* main.m in Sources */,
+				195A8498192C611100BE1C51 /* SocialMediaAccount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +296,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195A84A1192C611200BE1C51 /* Contact.m in Sources */,
 				19CD3BA219283FAB00ADD677 /* SocialTests.m in Sources */,
+				195A8499192C611100BE1C51 /* SocialMediaAccount.m in Sources */,
+				195A849D192C611200BE1C51 /* TimelineEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +496,7 @@
 				19CD3BA719283FAB00ADD677 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19CD3BA819283FAB00ADD677 /* Build configuration list for PBXNativeTarget "SocialTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +505,7 @@
 				19CD3BAA19283FAB00ADD677 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

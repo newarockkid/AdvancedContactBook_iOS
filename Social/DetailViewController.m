@@ -7,12 +7,14 @@
 //
 
 #import "DetailViewController.h"
+#import "SocialMediaAccountViewController.h"
+
 #import "Contact.h"
 
 @interface DetailViewController ()
 
 // Outlets for the UI elements.
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutlet UITextField *imageURLField;
@@ -61,7 +63,7 @@
     
     self.firstNameField.text = contact.firstName;
     self.lastNameField.text = contact.lastName;
-    self.addressLabel.text = contact.address;
+    //self.addressLabel.text = contact.address;
     self.imageURLField.text = contact.imageURL;
     self.imageView.image = [UIImage imageWithData:contact.image];
 }
@@ -74,19 +76,24 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SocialCell"];
     
     Contact *contact = self.detailItem;
+   
+    NSSet *socialSiteSet = [contact sites];
     
-    cell.textLabel.text = contact.firstName;
-    cell.detailTextLabel.text = contact.lastName;
+    NSSortDescriptor *nameSort = [[NSSortDescriptor alloc] initWithKey:@"accountType" ascending:YES];
+    NSArray *sortedSites = [socialSiteSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameSort]];
+    
+    id social = sortedSites[indexPath.row];
+    
+    cell.textLabel.text = [social valueForKey:@"identifier"];
+    cell.detailTextLabel.text = [social valueForKey:@"accountType"];
     return cell;
     
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [[self.detailItem sites] count];
 }
-
-
 
 #pragma mark - UITextField Delegate Method
 
@@ -116,6 +123,25 @@
 }
 
 
+#pragma mark - Segue Preparation 
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if( [[segue identifier] isEqualToString:@"addSocial"])
+    {
+        SocialMediaAccountViewController *svc = [segue destinationViewController];
+        svc.context = self.context;
+        
+        svc.passedContact = self.detailItem;
+    }
+}
+
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
+
 
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -124,7 +150,7 @@
     Contact *contact = self.detailItem;
     contact.firstName = self.firstNameField.text;
     contact.lastName = self.lastNameField.text;
-    contact.address = self.addressLabel.text;
+    //contact.address = self.addressLabel.text;
     contact.imageURL = self.imageURLField.text;
     contact.image = self.tempImageData;
     

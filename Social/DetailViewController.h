@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import <CoreData/CoreData.h>
+
 @interface DetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) id detailItem;

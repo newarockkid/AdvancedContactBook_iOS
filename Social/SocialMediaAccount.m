@@ -14,7 +14,7 @@
 @implementation SocialMediaAccount
 
 @dynamic identifier;
-@dynamic type;
+@dynamic accountType;
 @dynamic contact;
 @dynamic entries;
 

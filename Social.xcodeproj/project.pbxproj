@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		195A8498192C611100BE1C51 /* SocialMediaAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A8497192C611100BE1C51 /* SocialMediaAccount.m */; };
-		195A8499192C611100BE1C51 /* SocialMediaAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A8497192C611100BE1C51 /* SocialMediaAccount.m */; };
-		195A849C192C611200BE1C51 /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849B192C611200BE1C51 /* TimelineEntry.m */; };
-		195A849D192C611200BE1C51 /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849B192C611200BE1C51 /* TimelineEntry.m */; };
-		195A84A0192C611200BE1C51 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849F192C611200BE1C51 /* Contact.m */; };
-		195A84A1192C611200BE1C51 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 195A849F192C611200BE1C51 /* Contact.m */; };
+		1906EB18192C6DD9008C340F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1906EB17192C6DD9008C340F /* MapKit.framework */; };
+		1906EB1A192C6DDE008C340F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1906EB19192C6DDE008C340F /* Social.framework */; };
+		1906EB1C192C6DE4008C340F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1906EB1B192C6DE4008C340F /* Accounts.framework */; };
+		1906EB1F192C6FF8008C340F /* SocialMediaAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB1E192C6FF8008C340F /* SocialMediaAccountViewController.m */; };
+		1906EB20192C6FF8008C340F /* SocialMediaAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB1E192C6FF8008C340F /* SocialMediaAccountViewController.m */; };
+		1906EB23192C7AE4008C340F /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB22192C7AE4008C340F /* TimelineEntry.m */; };
+		1906EB24192C7AE4008C340F /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB22192C7AE4008C340F /* TimelineEntry.m */; };
+		1906EB27192C7AE4008C340F /* SocialMediaAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB26192C7AE4008C340F /* SocialMediaAccount.m */; };
+		1906EB28192C7AE4008C340F /* SocialMediaAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB26192C7AE4008C340F /* SocialMediaAccount.m */; };
+		1906EB2B192C7AE4008C340F /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB2A192C7AE4008C340F /* Contact.m */; };
+		1906EB2C192C7AE4008C340F /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB2A192C7AE4008C340F /* Contact.m */; };
 		19CD3B6E19283FAB00ADD677 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B6D19283FAB00ADD677 /* Foundation.framework */; };
 		19CD3B7019283FAB00ADD677 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B6F19283FAB00ADD677 /* CoreGraphics.framework */; };
 		19CD3B7219283FAB00ADD677 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B7119283FAB00ADD677 /* UIKit.framework */; };
@@ -44,12 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		195A8496192C611100BE1C51 /* SocialMediaAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMediaAccount.h; sourceTree = "<group>"; };
-		195A8497192C611100BE1C51 /* SocialMediaAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaAccount.m; sourceTree = "<group>"; };
-		195A849A192C611200BE1C51 /* TimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEntry.h; sourceTree = "<group>"; };
-		195A849B192C611200BE1C51 /* TimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEntry.m; sourceTree = "<group>"; };
-		195A849E192C611200BE1C51 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
-		195A849F192C611200BE1C51 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		1906EB17192C6DD9008C340F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1906EB19192C6DDE008C340F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		1906EB1B192C6DE4008C340F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		1906EB1D192C6FF8008C340F /* SocialMediaAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMediaAccountViewController.h; sourceTree = "<group>"; };
+		1906EB1E192C6FF8008C340F /* SocialMediaAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaAccountViewController.m; sourceTree = "<group>"; };
+		1906EB21192C7AE4008C340F /* TimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEntry.h; sourceTree = "<group>"; };
+		1906EB22192C7AE4008C340F /* TimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEntry.m; sourceTree = "<group>"; };
+		1906EB25192C7AE4008C340F /* SocialMediaAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMediaAccount.h; sourceTree = "<group>"; };
+		1906EB26192C7AE4008C340F /* SocialMediaAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaAccount.m; sourceTree = "<group>"; };
+		1906EB29192C7AE4008C340F /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		1906EB2A192C7AE4008C340F /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		19CD3B6A19283FAB00ADD677 /* Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CD3B6D19283FAB00ADD677 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		19CD3B6F19283FAB00ADD677 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,6 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1906EB1C192C6DE4008C340F /* Accounts.framework in Frameworks */,
+				1906EB1A192C6DDE008C340F /* Social.framework in Frameworks */,
+				1906EB18192C6DD9008C340F /* MapKit.framework in Frameworks */,
 				19CD3B7019283FAB00ADD677 /* CoreGraphics.framework in Frameworks */,
 				19CD3B7419283FAB00ADD677 /* CoreData.framework in Frameworks */,
 				19CD3B7219283FAB00ADD677 /* UIKit.framework in Frameworks */,
@@ -123,6 +136,9 @@
 		19CD3B6C19283FAB00ADD677 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1906EB1B192C6DE4008C340F /* Accounts.framework */,
+				1906EB19192C6DDE008C340F /* Social.framework */,
+				1906EB17192C6DD9008C340F /* MapKit.framework */,
 				19CD3B6D19283FAB00ADD677 /* Foundation.framework */,
 				19CD3B6F19283FAB00ADD677 /* CoreGraphics.framework */,
 				19CD3B7119283FAB00ADD677 /* UIKit.framework */,
@@ -138,18 +154,20 @@
 				19CD3B7E19283FAB00ADD677 /* AppDelegate.h */,
 				19CD3B7F19283FAB00ADD677 /* AppDelegate.m */,
 				19CD3B8119283FAB00ADD677 /* Main.storyboard */,
+				1906EB1D192C6FF8008C340F /* SocialMediaAccountViewController.h */,
+				1906EB1E192C6FF8008C340F /* SocialMediaAccountViewController.m */,
 				19CD3B8719283FAB00ADD677 /* MasterViewController.h */,
 				19CD3B8819283FAB00ADD677 /* MasterViewController.m */,
 				19CD3B8A19283FAB00ADD677 /* DetailViewController.h */,
 				19CD3B8B19283FAB00ADD677 /* DetailViewController.m */,
 				19CD3B8D19283FAB00ADD677 /* Images.xcassets */,
 				19CD3B8419283FAB00ADD677 /* Social.xcdatamodeld */,
-				195A849E192C611200BE1C51 /* Contact.h */,
-				195A849F192C611200BE1C51 /* Contact.m */,
-				195A849A192C611200BE1C51 /* TimelineEntry.h */,
-				195A849B192C611200BE1C51 /* TimelineEntry.m */,
-				195A8496192C611100BE1C51 /* SocialMediaAccount.h */,
-				195A8497192C611100BE1C51 /* SocialMediaAccount.m */,
+				1906EB29192C7AE4008C340F /* Contact.h */,
+				1906EB2A192C7AE4008C340F /* Contact.m */,
+				1906EB25192C7AE4008C340F /* SocialMediaAccount.h */,
+				1906EB26192C7AE4008C340F /* SocialMediaAccount.m */,
+				1906EB21192C7AE4008C340F /* TimelineEntry.h */,
+				1906EB22192C7AE4008C340F /* TimelineEntry.m */,
 				19CD3B7619283FAB00ADD677 /* Supporting Files */,
 			);
 			path = Social;
@@ -281,14 +299,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				195A84A0192C611200BE1C51 /* Contact.m in Sources */,
+				1906EB27192C7AE4008C340F /* SocialMediaAccount.m in Sources */,
 				19CD3B8C19283FAB00ADD677 /* DetailViewController.m in Sources */,
 				19CD3B8919283FAB00ADD677 /* MasterViewController.m in Sources */,
-				195A849C192C611200BE1C51 /* TimelineEntry.m in Sources */,
+				1906EB1F192C6FF8008C340F /* SocialMediaAccountViewController.m in Sources */,
 				19CD3B8619283FAB00ADD677 /* Social.xcdatamodeld in Sources */,
 				19CD3B8019283FAB00ADD677 /* AppDelegate.m in Sources */,
 				19CD3B7C19283FAB00ADD677 /* main.m in Sources */,
-				195A8498192C611100BE1C51 /* SocialMediaAccount.m in Sources */,
+				1906EB2B192C7AE4008C340F /* Contact.m in Sources */,
+				1906EB23192C7AE4008C340F /* TimelineEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,10 +315,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				195A84A1192C611200BE1C51 /* Contact.m in Sources */,
+				1906EB20192C6FF8008C340F /* SocialMediaAccountViewController.m in Sources */,
+				1906EB28192C7AE4008C340F /* SocialMediaAccount.m in Sources */,
+				1906EB2C192C7AE4008C340F /* Contact.m in Sources */,
+				1906EB24192C7AE4008C340F /* TimelineEntry.m in Sources */,
 				19CD3BA219283FAB00ADD677 /* SocialTests.m in Sources */,
-				195A8499192C611100BE1C51 /* SocialMediaAccount.m in Sources */,
-				195A849D192C611200BE1C51 /* TimelineEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

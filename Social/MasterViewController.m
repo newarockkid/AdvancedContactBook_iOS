@@ -39,26 +39,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)insertNewObject:(id)sender
 {
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    Contact *newContact = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-   
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    newContact.firstName = [NSString stringWithFormat:@"Hello : %d" ,rand()];
-    newContact.lastName = @"World!";
-    newContact.address = [NSString stringWithFormat:@"%d Street, %d", rand(), rand()];
-    
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-         // Replace this implementation with code to handle the error appropriately.
-         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
+    [self performSegueWithIdentifier:@"showDetail" sender:nil];
 }
 
 #pragma mark - Table View
@@ -114,10 +98,19 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         
         DetailViewController *dvc = [segue destinationViewController];
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        dvc.detailItem = object;
-
+        Contact *contact;
+        
+        if([sender class] == [UITableViewCell class]){
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            contact = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        }
+        else{
+            NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+            NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+            contact = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+        }
+        
+        dvc.detailItem = contact;
         // Managed Object Context for Editing.
         dvc.context = self.managedObjectContext;
         
@@ -141,7 +134,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -225,8 +218,10 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"firstName"] description];
+    Contact *contact= [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = contact.firstName;
+    cell.detailTextLabel.text = contact.lastName;
+    cell.imageView.image = [UIImage imageWithData:contact.image];
 }
 
 @end

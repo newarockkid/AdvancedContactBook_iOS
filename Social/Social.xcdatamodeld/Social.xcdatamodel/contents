@@ -9,8 +9,8 @@
         <relationship name="sites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SocialMediaAccount" inverseName="contact" inverseEntity="SocialMediaAccount" syncable="YES"/>
     </entity>
     <entity name="SocialMediaAccount" representedClassName="SocialMediaAccount" syncable="YES">
+        <attribute name="accountType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="sites" inverseEntity="Contact" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimelineEntry" inverseName="account" inverseEntity="TimelineEntry" syncable="YES"/>
     </entity>
@@ -22,7 +22,7 @@
     </entity>
     <elements>
         <element name="Contact" positionX="-423" positionY="765" width="128" height="133"/>
-        <element name="SocialMediaAccount" positionX="-396" positionY="983" width="128" height="103"/>
+        <element name="SocialMediaAccount" positionX="-396" positionY="983" width="128" height="105"/>
         <element name="TimelineEntry" positionX="-189" positionY="936" width="128" height="103"/>
     </elements>
 </model>

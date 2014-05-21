@@ -14,7 +14,7 @@
 @interface SocialMediaAccount : NSManagedObject
 
 @property (nonatomic, retain) NSString * identifier;
-@property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSString * accountType;
 @property (nonatomic, retain) Contact *contact;
 @property (nonatomic, retain) NSSet *entries;
 @end

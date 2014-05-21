@@ -62,9 +62,15 @@
     
     NSMutableSet *mutableSites = [[NSMutableSet alloc] init];
     
-    [mutableSites addObject:flickr];
-    [mutableSites addObject:twitter];
-    [mutableSites addObject:website];
+    if(![self.flickrField.text isEqualToString:@""]){
+        [mutableSites addObject:flickr];
+    }
+    if(![self.twitterField.text isEqualToString:@""]){
+        [mutableSites addObject:twitter];
+    }
+    if(![self.websiteField.text isEqualToString:@""]){
+        [mutableSites addObject:website];
+    }
     
     [contact addSites:mutableSites];
     

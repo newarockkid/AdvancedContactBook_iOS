@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "SocialMediaAccountViewController.h"
 #import "WebsiteViewController.h"
+#import "FeedTableViewController.h"
 
 #import "Contact.h"
 
@@ -161,6 +162,7 @@
     
     else if ([[segue identifier] isEqualToString:@"showFeedView"])
     {
+        FeedTableViewController *fvc = [segue destinationViewController];
         NSLog(@"Username: %@ , For Account Type:  %@", [sender valueForKey:@"identifier"], [sender valueForKey:@"accountType"]);
     }
     

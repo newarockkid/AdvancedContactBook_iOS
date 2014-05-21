@@ -18,6 +18,8 @@
 		1906EB28192C7AE4008C340F /* SocialMediaAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB26192C7AE4008C340F /* SocialMediaAccount.m */; };
 		1906EB2B192C7AE4008C340F /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB2A192C7AE4008C340F /* Contact.m */; };
 		1906EB2C192C7AE4008C340F /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1906EB2A192C7AE4008C340F /* Contact.m */; };
+		196922AB192C9B46009E868A /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196922AA192C9B46009E868A /* WebsiteViewController.m */; };
+		196922AC192C9B46009E868A /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196922AA192C9B46009E868A /* WebsiteViewController.m */; };
 		19CD3B6E19283FAB00ADD677 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B6D19283FAB00ADD677 /* Foundation.framework */; };
 		19CD3B7019283FAB00ADD677 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B6F19283FAB00ADD677 /* CoreGraphics.framework */; };
 		19CD3B7219283FAB00ADD677 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CD3B7119283FAB00ADD677 /* UIKit.framework */; };
@@ -60,6 +62,8 @@
 		1906EB26192C7AE4008C340F /* SocialMediaAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaAccount.m; sourceTree = "<group>"; };
 		1906EB29192C7AE4008C340F /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		1906EB2A192C7AE4008C340F /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		196922A9192C9B46009E868A /* WebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteViewController.h; sourceTree = "<group>"; };
+		196922AA192C9B46009E868A /* WebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteViewController.m; sourceTree = "<group>"; };
 		19CD3B6A19283FAB00ADD677 /* Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CD3B6D19283FAB00ADD677 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		19CD3B6F19283FAB00ADD677 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -168,6 +172,8 @@
 				1906EB26192C7AE4008C340F /* SocialMediaAccount.m */,
 				1906EB21192C7AE4008C340F /* TimelineEntry.h */,
 				1906EB22192C7AE4008C340F /* TimelineEntry.m */,
+				196922A9192C9B46009E868A /* WebsiteViewController.h */,
+				196922AA192C9B46009E868A /* WebsiteViewController.m */,
 				19CD3B7619283FAB00ADD677 /* Supporting Files */,
 			);
 			path = Social;
@@ -307,6 +313,7 @@
 				19CD3B8019283FAB00ADD677 /* AppDelegate.m in Sources */,
 				19CD3B7C19283FAB00ADD677 /* main.m in Sources */,
 				1906EB2B192C7AE4008C340F /* Contact.m in Sources */,
+				196922AB192C9B46009E868A /* WebsiteViewController.m in Sources */,
 				1906EB23192C7AE4008C340F /* TimelineEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +326,7 @@
 				1906EB28192C7AE4008C340F /* SocialMediaAccount.m in Sources */,
 				1906EB2C192C7AE4008C340F /* Contact.m in Sources */,
 				1906EB24192C7AE4008C340F /* TimelineEntry.m in Sources */,
+				196922AC192C9B46009E868A /* WebsiteViewController.m in Sources */,
 				19CD3BA219283FAB00ADD677 /* SocialTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

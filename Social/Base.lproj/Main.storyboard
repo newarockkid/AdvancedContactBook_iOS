@@ -141,6 +141,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="RQE-3X-DeV" kind="push" identifier="showWebsite" id="NBs-mI-yMI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -183,6 +186,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="433" y="241"/>
+        </scene>
+        <!--Website View Controller - Website-->
+        <scene sceneID="82b-Sg-97T">
+            <objects>
+                <viewController id="RQE-3X-DeV" customClass="WebsiteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xWV-f9-bb7"/>
+                        <viewControllerLayoutGuide type="bottom" id="oot-cV-iTL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ETb-Ns-v1u">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOQ-VS-z37">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="RQE-3X-DeV" id="pvx-pE-oQm"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Website" id="1Vb-PQ-rx7"/>
+                    <connections>
+                        <outlet property="webView" destination="wOQ-VS-z37" id="MAg-ko-9RP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggp-1p-SHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965" y="241"/>
         </scene>
         <!--Social Media Account View Controller - Add Social Media Account-->
         <scene sceneID="4DI-ld-beI">
@@ -266,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wy2-cO-p6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="350"/>
+            <point key="canvasLocation" x="965" y="-516"/>
         </scene>
         <!--View Controller - Map View-->
         <scene sceneID="xwF-Sw-eaM">
@@ -297,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZs-xI-jSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="-332"/>
+            <point key="canvasLocation" x="433" y="-544"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

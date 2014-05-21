@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "SocialMediaAccountViewController.h"
+#import "WebsiteViewController.h"
 
 #import "Contact.h"
 
@@ -124,7 +125,7 @@
     
     id social = sortedSites[indexPath.row];
     
-    NSLog([NSString stringWithFormat:@"%@ is a type of %@", [social valueForKey:@"identifier"], [social valueForKey:@"accountType"]]);
+   //NSLog([NSString stringWithFormat:@"%@ is a type of %@", [social valueForKey:@"identifier"], [social valueForKey:@"accountType"]]);
 }
 
 #pragma mark - Segue Preparation 
@@ -138,6 +139,19 @@
         
         svc.passedContact = self.detailItem;
     }
+    
+    else if( [[segue identifier] isEqualToString:@"showWebsite"])
+    {
+        WebsiteViewController *wvc = [segue destinationViewController];
+        
+        wvc.passedWebsiteURL = @"http://griffith.edu.au";
+    }
+    
+    // else if Website.
+    
+    
+    
+    // else if Feed. (Twitter and Flickr!)
 }
 
 

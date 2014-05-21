@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Contact" syncable="YES">
-        <attribute name="address" optional="YES" syncable="YES"/>
-        <attribute name="firstName" optional="YES" syncable="YES"/>
-        <attribute name="image" optional="YES" syncable="YES"/>
-        <attribute name="imageURL" optional="YES" syncable="YES"/>
-        <attribute name="lastName" optional="YES" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SocialMediaAccount" inverseName="contact" inverseEntity="SocialMediaAccount" syncable="YES"/>
     </entity>
     <entity name="Event">
@@ -15,20 +15,20 @@
         <userInfo/>
     </entity>
     <entity name="SocialMediaAccount" syncable="YES">
-        <attribute name="identifier" optional="YES" syncable="YES"/>
-        <attribute name="type" optional="YES" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="sites" inverseEntity="Contact" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimelineEntry" inverseName="account" inverseEntity="TimelineEntry" syncable="YES"/>
     </entity>
     <entity name="TimelineEntry" syncable="YES">
-        <attribute name="image" optional="YES" syncable="YES"/>
-        <attribute name="siteData" optional="YES" syncable="YES"/>
-        <attribute name="text" optional="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="siteData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SocialMediaAccount" inverseName="entries" inverseEntity="SocialMediaAccount" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-126" positionY="795" width="128" height="60"/>
         <element name="Contact" positionX="-423" positionY="765" width="128" height="133"/>
+        <element name="Event" positionX="-126" positionY="795" width="128" height="60"/>
         <element name="SocialMediaAccount" positionX="-396" positionY="983" width="128" height="103"/>
         <element name="TimelineEntry" positionX="-189" positionY="936" width="128" height="103"/>
     </elements>

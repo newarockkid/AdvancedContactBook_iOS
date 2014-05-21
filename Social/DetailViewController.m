@@ -9,7 +9,9 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
-- (void)configureView;
+
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @end
 
 @implementation DetailViewController
@@ -22,16 +24,6 @@
         _detailItem = newDetailItem;
         
         // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
     }
 }
 
@@ -39,7 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
+    self.addressLabel.text = @"Hello World!";
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,4 +40,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark - Table View Delegate Methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SocialCell"];
+    
+    cell.textLabel.text = @"Hello";
+    
+    return cell;
+    
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
 @end

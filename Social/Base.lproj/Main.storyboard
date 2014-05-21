@@ -79,12 +79,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ah7-4n-0Wa" id="dEM-3n-lRf"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter first name..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGr-mh-uNn">
                                 <rect key="frame" x="170" y="74" width="130" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ah7-4n-0Wa" id="Jw9-WC-Jfs"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address Label..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hri-pA-RzC">
                                 <rect key="frame" x="0.0" y="111" width="320" height="27"/>
@@ -148,6 +154,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ah7-4n-0Wa" id="7C2-Bi-Lxb"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-GE-Sak">
                                 <rect key="frame" x="20" y="368" width="280" height="162"/>
@@ -160,7 +169,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yrY-ZI-Hkm"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addSocialButtonPressed" destination="yrY-ZI-Hkm" id="ejf-41-V94"/>
                         <outlet property="addressLabel" destination="Hri-pA-RzC" id="N5V-xN-0DJ"/>
+                        <outlet property="firstNameField" destination="eBJ-dn-tcp" id="YIu-uJ-6b0"/>
+                        <outlet property="imageURLField" destination="8Zh-Jt-ckH" id="r7h-yT-yvj"/>
+                        <outlet property="imageView" destination="zh7-GE-Sak" id="c8H-EY-4AY"/>
+                        <outlet property="lastNameField" destination="fGr-mh-uNn" id="7ta-5j-HSP"/>
+                        <outlet property="tableView" destination="2De-cv-7gY" id="FGv-eY-3u4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>

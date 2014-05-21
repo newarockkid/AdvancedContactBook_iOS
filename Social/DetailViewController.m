@@ -10,7 +10,16 @@
 
 @interface DetailViewController ()
 
+// Outlets for the UI elements.
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameField;
+@property (weak, nonatomic) IBOutlet UITextField *imageURLField;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addSocialButtonPressed;
 
 @end
 
@@ -58,4 +67,15 @@
 {
     return 1;
 }
+
+
+
+#pragma mark - UITextField Delegate Method
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES:
+}
+
 @end

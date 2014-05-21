@@ -125,33 +125,45 @@
     
     id social = sortedSites[indexPath.row];
     
-   //NSLog([NSString stringWithFormat:@"%@ is a type of %@", [social valueForKey:@"identifier"], [social valueForKey:@"accountType"]]);
+    if([[social valueForKey:@"accountType"] isEqualToString:@"Website"]){
+        NSLog(@"Website");
+        [self performSegueWithIdentifier:@"showWebView" sender:nil];
+        
+    }
+    else if([[social valueForKey:@"accountType"] isEqualToString:@"Twitter"]){
+        NSLog(@"Twitter Feed");
+        [self performSegueWithIdentifier:@"showFeedView" sender:social];
+    }
+    else if([[social valueForKey:@"accountType"] isEqualToString:@"Flickr"]){
+        NSLog(@"Flickr Feed");
+        [self performSegueWithIdentifier:@"showFeedView" sender:social];
+    }
+    
 }
+
 
 #pragma mark - Segue Preparation 
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if( [[segue identifier] isEqualToString:@"addSocial"])
+    if([[segue identifier] isEqualToString:@"addSocial"])
     {
         SocialMediaAccountViewController *svc = [segue destinationViewController];
         svc.context = self.context;
-        
         svc.passedContact = self.detailItem;
     }
     
-    else if( [[segue identifier] isEqualToString:@"showWebsite"])
+    else if([[segue identifier] isEqualToString:@"showWebView"])
     {
         WebsiteViewController *wvc = [segue destinationViewController];
-        
         wvc.passedWebsiteURL = @"http://griffith.edu.au";
     }
     
-    // else if Website.
+    else if ([[segue identifier] isEqualToString:@"showFeedView"])
+    {
+        NSLog(@"Username: %@ , For Account Type:  %@", [sender valueForKey:@"identifier"], [sender valueForKey:@"accountType"]);
+    }
     
-    
-    
-    // else if Feed. (Twitter and Flickr!)
 }
 
 

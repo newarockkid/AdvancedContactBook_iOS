@@ -74,14 +74,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SocialCell"];
-    
-    Contact *contact = self.detailItem;
-   
-    NSSet *socialSiteSet = [contact sites];
-    
-    NSSortDescriptor *nameSort = [[NSSortDescriptor alloc] initWithKey:@"accountType" ascending:YES];
-    NSArray *sortedSites = [socialSiteSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameSort]];
-    
+
+    NSArray *sortedSites = [self sortedSitesReturn];
+
     id social = sortedSites[indexPath.row];
     
     cell.textLabel.text = [social valueForKey:@"identifier"];
@@ -123,6 +118,15 @@
 }
 
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *sortedSites = [self sortedSitesReturn];
+    
+    id social = sortedSites[indexPath.row];
+    
+    NSLog([NSString stringWithFormat:@"%@ is a type of %@", [social valueForKey:@"identifier"], [social valueForKey:@"accountType"]]);
+}
+
 #pragma mark - Segue Preparation 
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -142,6 +146,23 @@
     [self.tableView reloadData];
 }
 
+
+
+/*
+ ** This takes in the current Contact managedObject and returns an NSArray that contains all the social media accounts sorted alphabetically according to the accountType.
+    Possible accountTypes are: "Flickr", "Twitter" & "Website".
+*/
+- (NSArray *) sortedSitesReturn
+{
+    Contact *contact = self.detailItem;
+    
+    NSSet *socialSiteSet = [contact sites];
+    
+    NSSortDescriptor *nameSort = [[NSSortDescriptor alloc] initWithKey:@"accountType" ascending:YES];
+    NSArray *sortedSites = [socialSiteSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameSort]];
+    
+    return sortedSites;
+}
 
 
 - (void) viewWillDisappear:(BOOL)animated

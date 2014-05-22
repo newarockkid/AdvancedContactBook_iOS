@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Contact.h"
 
 @interface MapViewController : UIViewController <UITextFieldDelegate>
+
+@property NSManagedObjectContext *context;
+@property Contact *passedContact;
 
 @end

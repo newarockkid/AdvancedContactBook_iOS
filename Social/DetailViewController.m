@@ -11,6 +11,7 @@
 #import "WebsiteViewController.h"
 #import "FeedTableViewController.h"
 #import "FlickrTableViewController.h"
+#import "MapViewController.h"
 
 #import "Contact.h"
 
@@ -188,17 +189,23 @@
         
         NSLog(@"Username: %@ , For Account Type:  %@", [sender valueForKey:@"identifier"], [sender valueForKey:@"accountType"]);
     }
+    
+    else if([[segue identifier] isEqualToString:@"showMapView"])
+    {
+        MapViewController *mvc = [segue destinationViewController];
+        mvc.context = self.context;
+        mvc.passedContact = self.detailItem;
+    }
 
 }
 
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [self configureView];
     [self.tableView reloadData];
 }
 
-- (IBAction)addressPressed:(id)sender {
-}
 
 
 /*

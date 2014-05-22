@@ -81,9 +81,12 @@
 
 - (void) setUpMap
 {
-    if([self.mapTextField.text isEqualToString:@""])
+    if([self.passedContact.address isEqualToString:@""])
     {
         self.mapTextField.text = @"Griffith University, Nathan";
+    }
+    else{
+        self.mapTextField.text = self.passedContact.address;
     }
     CLLocationCoordinate2D myCoordinate = [self geoCodeUsingAddress:self.mapTextField.text];
     
@@ -93,9 +96,19 @@
     self.mapView.region = myRegion;
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+
+}
+
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
+    self.passedContact.address = self.mapTextField.text;
+    NSError *error;
+    
+    [self.context save:&error];
     [self setUpMap];
     return YES;
 }

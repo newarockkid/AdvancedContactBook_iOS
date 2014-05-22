@@ -175,7 +175,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hOB-1F-B5Y" kind="push" id="hfm-5J-DUh"/>
+                                    <segue destination="hOB-1F-B5Y" kind="push" identifier="showMapView" id="hfm-5J-DUh"/>
                                 </connections>
                             </button>
                         </subviews>

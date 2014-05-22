@@ -17,10 +17,6 @@
 #define USER_TWITTER_SECRET_KEY @"fKgu15HrrMrOMTTlqRpY35Rvw2kfFtAnBLmBPGeLE1nEIJbigC"
 #define MAX_TWEET_COUNT 15
 
-#define USER_FLICKR_API_KEY @"59f3dbe40e6f3d1f62678573b1145dce"
-#define DEFAULT_MAX_RESULTS     25
-
-
 
 @interface FeedTableViewController ()
 
@@ -55,10 +51,19 @@
     
     if([self.accountType isEqualToString:@"Twitter"]){
         self.navigationItem.title = [NSString stringWithFormat:@"%@'s Twitter Feed", self.username];
-        [self getTimeLineForUser];
+        
+        // If there is so 'Tweet Feed' for the current Account Object, then go and get the Twitter Feed.
+        if([[self.passedAccount entries] count] == 0){
+            [self getTimeLineForUser];
+        }
+        // Otherwise just load the existing tweets.
+        else{
+            self.timelineFeeds = [[self sortedFeedsReturn] mutableCopy];
+        }
     }
 
 }
+
 
 
 - (void)didReceiveMemoryWarning
@@ -91,6 +96,11 @@
 
 #pragma mark - Twitter API 1.1 methods using STTwitter.
 
+/* 
+    This function uses the STTwitter framework.
+
+ 
+ */
 - (void) getTimeLineForUser
 {
     UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
@@ -102,7 +112,17 @@
         [twitter getUserTimelineWithScreenName:[self.passedAccount valueForKey:@"identifier"] count:MAX_TWEET_COUNT successBlock:^(NSArray *statuses) {
             
             self.timelineFeeds = [NSMutableArray arrayWithArray:statuses];
+            
             UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+            
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"TimelineEntry" inManagedObjectContext:self.context];
+            
+            for (NSDictionary *feed in self.timelineFeeds)
+            {
+                TimelineEntry *entry = [[TimelineEntry alloc] initWithEntity:entity insertIntoManagedObjectContext:self.context];
+                entry.text = [feed valueForKey:@"text"];
+                [self.passedAccount addEntriesObject:entry];
+            }
             
             [self.tableView reloadData];
             
@@ -120,10 +140,37 @@
 }
 
 
+
+
+// Manually call reload if needed.
+
+- (IBAction)reloadButtonPressed:(UIBarButtonItem *)sender {
+    [self getTimeLineForUser];
+}
+
+
 - (void) viewWillDisappear:(BOOL)animated
 {
-    // Add tweets to the SocialMedia's Timeline Entries.
     // Save context.
+    NSError *error;
+    [self.context save:&error];
+}
+
+
+/*
+ The 'Entries' entity in the SocialMediaAccount object is a set. Before any manipulation can take place, it must first be sorted.
+ This function sorts the NSSet according to the tweet's title/text.
+*/
+- (NSArray *) sortedFeedsReturn
+{
+    SocialMediaAccount *account = self.passedAccount;
+    
+    NSSet *feedSet = [account entries];
+    
+    NSSortDescriptor *nameSort = [[NSSortDescriptor alloc] initWithKey:@"text" ascending:YES];
+    NSArray *sortedFeeds = [feedSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameSort]];
+    
+    return sortedFeeds;
 }
 
 @end

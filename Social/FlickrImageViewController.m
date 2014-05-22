@@ -10,6 +10,8 @@
 
 @interface FlickrImageViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @implementation FlickrImageViewController
@@ -35,15 +37,43 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) viewWillAppear:(BOOL)animated
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if(self.tempObject){
+        // Set up the image view.
+        
+        self.navigationItem.title = [self.tempObject valueForKey:@"title"];
+        
+        NSString *photoID = [self.tempObject valueForKey:@"id"];
+
+        
+        NSArray *photoSizes = [self.passedAPI photoSizes:photoID];
+        NSDictionary *largestPhoto = [photoSizes objectAtIndex:3];
+        NSURL *largestPhotoURL = [NSURL URLWithString:[largestPhoto valueForKey:@"source"]];
+        
+        dispatch_queue_t background = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        
+        dispatch_async(background, ^{
+            
+            UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
+            
+            NSData *imageData = [NSData dataWithContentsOfURL:largestPhotoURL];
+            
+            UIImage *image = [UIImage imageWithData:imageData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+                
+                self.imageView.image = image;
+                
+            });
+        });
+
+    }
 }
-*/
+
 
 @end

@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrAPI.h"
+
+#import "TimelineEntry.h"
 
 @interface FlickrImageViewController : UIViewController
+
+
+@property FlickrAPI *passedAPI;
+
+@property NSManagedObjectContext *context;
+@property TimelineEntry *passedEntry;
+@property id tempObject;
 
 @end

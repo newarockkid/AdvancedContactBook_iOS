@@ -196,17 +196,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" textLabel="lQ8-cO-Cat" style="IBUITableViewCellStyleDefault" id="ycj-5l-AFd">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" textLabel="lQ8-cO-Cat" rowHeight="50" style="IBUITableViewCellStyleDefault" id="ycj-5l-AFd">
+                                <rect key="frame" x="0.0" y="86" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ycj-5l-AFd" id="UAV-ZN-36r">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lQ8-cO-Cat">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" id="lQ8-cO-Cat">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -219,7 +219,13 @@
                             <outlet property="delegate" destination="E6K-ev-D7C" id="ygp-cZ-iVA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Timeline" id="4t1-Ba-dYi"/>
+                    <navigationItem key="navigationItem" title="Timeline" id="4t1-Ba-dYi">
+                        <barButtonItem key="rightBarButtonItem" title="Reload" id="0F8-v2-cOx">
+                            <connections>
+                                <action selector="reloadButtonPressed:" destination="E6K-ev-D7C" id="YzE-nA-6g2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Cc9-fE-LrX" id="efv-dN-7cA"/>
                     </connections>
@@ -289,6 +295,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Title" id="ooM-Ry-xta"/>
+                    <connections>
+                        <outlet property="imageView" destination="K43-sL-hph" id="SHG-mV-7gd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mss-r4-efh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

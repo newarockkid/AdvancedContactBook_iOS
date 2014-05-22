@@ -63,7 +63,12 @@
  */
 - (NSArray *) photoSizes: (NSString *) photoID;
 
+
+- (NSArray *) photosForUserName: (NSString *) userName;
+
 @end
+
+
 
 
 /**

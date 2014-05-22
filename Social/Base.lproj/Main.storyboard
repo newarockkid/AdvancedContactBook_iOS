@@ -228,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="595" y="928"/>
         </scene>
-        <!--Table View Controller - Flickr-->
+        <!--Flickr Table View Controller - Flickr-->
         <scene sceneID="jh9-qt-bwi">
             <objects>
-                <tableViewController id="cQa-C7-wpX" sceneMemberID="viewController">
+                <tableViewController id="cQa-C7-wpX" customClass="FlickrTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SPs-gp-NtB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -269,10 +269,10 @@
             </objects>
             <point key="canvasLocation" x="595" y="1631"/>
         </scene>
-        <!--View Controller - Photo Title-->
+        <!--Flickr Image View Controller - Photo Title-->
         <scene sceneID="JRk-VW-U2G">
             <objects>
-                <viewController id="gB4-5O-Fhq" sceneMemberID="viewController">
+                <viewController id="gB4-5O-Fhq" customClass="FlickrImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4LN-NP-3YE"/>
                         <viewControllerLayoutGuide type="bottom" id="nf6-bY-BRv"/>

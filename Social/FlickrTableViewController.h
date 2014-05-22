@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SocialMediaAccount.h"
+#import "TimelineEntry.h"
 
-@interface FlickrTableViewController : UITableViewController
+@interface FlickrTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
+
+@property NSManagedObjectContext *context;
+
+@property SocialMediaAccount *passedAccount;
+
 
 @end

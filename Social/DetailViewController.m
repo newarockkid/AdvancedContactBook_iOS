@@ -10,6 +10,7 @@
 #import "SocialMediaAccountViewController.h"
 #import "WebsiteViewController.h"
 #import "FeedTableViewController.h"
+#import "FlickrTableViewController.h"
 
 #import "Contact.h"
 
@@ -171,7 +172,7 @@
     
     else if ([[segue identifier] isEqualToString:@"showFlickrView"])
     {
-        FeedTableViewController *fvc = [segue destinationViewController];
+        FlickrTableViewController *fvc = [segue destinationViewController];
         fvc.passedAccount = sender;
         fvc.context = self.context;
         

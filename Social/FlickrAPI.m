@@ -8,7 +8,7 @@
 
 #import "FlickrAPI.h"
 
-#define DEFAULT_MAX_RESULTS     75
+#define DEFAULT_MAX_RESULTS 25
 
 NSString *kFlickrPhotoFormatOriginal  = @"o";
 NSString *kFlickrPhotoFormatSquare    = @"s";
@@ -65,7 +65,7 @@ NSString *kFlickrPhotoFormat640       = @"z";
     NSString *request = [NSString stringWithFormat: @"http://api.flickr.com/services/rest/?method=flickr.people.findByUsername&username=%@", friendUserName];
     NSDictionary *result = [self fetch: request];
     NSString *nsid = [result valueForKeyPath: @"user.nsid"];
-
+    
     request = [NSString stringWithFormat: @"http://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=%ld&has_geo=1&user_id=%@&extras=original_format,tags,description,geo,date_upload,owner_name,place_url", (long) self.maximumResults, nsid];
 
     result = [self fetch: request];
@@ -138,6 +138,26 @@ NSString *kFlickrPhotoFormat640       = @"z";
     return jsonContent;
 }
 
+
+
+
+// Added to function with the new Flickr API
+
+- (NSArray *) photosForUserName: (NSString *) userName
+{
+    NSString *request = [NSString stringWithFormat: @"https://api.flickr.com/services/rest/?method=flickr.people.findByUsername&api_key=%@&username=%@&format=json&nojsoncallback=1", self.apiKey, userName];
+    NSDictionary *result = [self fetch: request];
+    NSString *nsid = [result valueForKeyPath: @"user.nsid"];
+    
+    if(!nsid){
+        NSLog(@"Could not find the username");
+    }
+    
+    request = [NSString stringWithFormat: @"https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=%@&user_id=%@&per_page=%d&format=json&nojsoncallback=1", self.apiKey, nsid, DEFAULT_MAX_RESULTS];
+    
+    result = [self fetch: request];
+    return [result valueForKeyPath: @"photos.photo"];
+}
 
 - (NSMutableArray *) photoSizes: (NSString *) photoID
 {

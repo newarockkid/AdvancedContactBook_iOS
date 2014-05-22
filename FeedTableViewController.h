@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SocialMediaAccount.h"
+#import "TimelineEntry.h"
 
 @interface FeedTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 

@@ -47,9 +47,8 @@
         self.navigationItem.title = [self.tempObject valueForKey:@"title"];
         
         NSString *photoID = [self.tempObject valueForKey:@"id"];
-
         
-        NSArray *photoSizes = [self.passedAPI photoSizes:photoID];
+        NSArray *photoSizes = [self.flickrAPI photoSizes:photoID];
         NSDictionary *largestPhoto = [photoSizes objectAtIndex:3];
         NSURL *largestPhotoURL = [NSURL URLWithString:[largestPhoto valueForKey:@"source"]];
         

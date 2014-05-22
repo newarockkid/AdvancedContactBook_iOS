@@ -14,7 +14,7 @@
 @interface FlickrImageViewController : UIViewController
 
 
-@property FlickrAPI *passedAPI;
+@property FlickrAPI *flickrAPI;
 
 @property NSManagedObjectContext *context;
 @property TimelineEntry *passedEntry;

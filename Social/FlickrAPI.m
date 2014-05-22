@@ -2,21 +2,14 @@
 //  FlickrAPI.m
 //  FlickrAPI
 //
-//  Created by Rene Hexel on 22/04/13.
-//  Copyright (c) 2013-2014 Rene Hexel. All rights reserved.
+//  Created by Nishant Shrestha on 20/05/14.
+//  Copyright (c) 2013-2014 Nishant Shrestha. All rights reserved.
 //
 
 #import "FlickrAPI.h"
 
 #define DEFAULT_MAX_RESULTS 25
 
-NSString *kFlickrPhotoFormatOriginal  = @"o";
-NSString *kFlickrPhotoFormatSquare    = @"s";
-NSString *kFlickrPhotoFormatBig       = @"b";
-NSString *kFlickrPhotoFormatSmall     = @"m";
-NSString *kFlickrPhotoFormatThumbnail = @"t";
-NSString *kFlickrPhotoFormat500       = @"-";
-NSString *kFlickrPhotoFormat640       = @"z";
 
 @implementation FlickrAPI
 
@@ -39,80 +32,6 @@ NSString *kFlickrPhotoFormat640       = @"z";
         return [[self fetch: request] valueForKeyPath: @"photos.photo"];
 }
 
-
-- (NSMutableArray *) topPlacesByRegion
-{
-        NSString *request = [NSString stringWithFormat: @"http://api.flickr.com/services/rest/?method=flickr.places.getTopPlacesList&place_type_id=8"];
-
-        return [[self fetch: request] valueForKeyPath: @"places.place"];
-}
-
-
-- (NSArray *) photosInRegion: (NSDictionary *) place
-{
-        NSString *placeId = [place objectForKey: @"place_id"];
-        if (!placeId)
-                return nil;
-
-        NSString *request = [NSString stringWithFormat: @"http://api.flickr.com/services/rest/?method=flickr.photos.search&place_id=%@&per_page=%ld&extras=original_format,tags,description,geo,date_upload,owner_name,place_url", placeId, (long) self.maximumResults];
-        
-        return [[self fetch: request] valueForKeyPath: @"photos.photo"];
-}
-
-
-- (NSArray *) photosForUser: (NSString *) friendUserName
-{
-    NSString *request = [NSString stringWithFormat: @"http://api.flickr.com/services/rest/?method=flickr.people.findByUsername&username=%@", friendUserName];
-    NSDictionary *result = [self fetch: request];
-    NSString *nsid = [result valueForKeyPath: @"user.nsid"];
-    
-    request = [NSString stringWithFormat: @"http://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=%ld&has_geo=1&user_id=%@&extras=original_format,tags,description,geo,date_upload,owner_name,place_url", (long) self.maximumResults, nsid];
-
-    result = [self fetch: request];
-
-    return [result valueForKeyPath: @"photos.photo"];
-}
-
-
-- (NSURL *) photoURLFor: photo
-{
-        NSString *photoURLString = [self urlStringForPhoto: photo format: kFlickrPhotoFormatOriginal];
-
-        if (!photoURLString) return nil;
-
-        return [NSURL URLWithString: photoURLString];
-}
-
-
-- (NSURL *) photoURLFor: photo format: (NSString *) flickrPhotoFormat
-{
-        NSString *photoURLString = [self urlStringForPhoto: photo format: flickrPhotoFormat];
-        
-        if (!photoURLString) return nil;
-        
-        return [NSURL URLWithString: photoURLString];
-}
-
-
-- (NSString *) urlStringForPhoto: photo format: (NSString *) format
-{
-	id phfarm = photo[@"farm"];
-	id server = photo[@"server"];
-	id unique = photo[@"id"];
-	id secret = photo[@"secret"];
-
-	NSString *kind = @"jpg";
-	if ([format isEqualToString: kFlickrPhotoFormatOriginal])
-        {
-                secret = photo[@"originalsecret"];
-                kind = photo[@"originalformat"];
-        }
-
-        if (phfarm && server && unique && secret)
-                return [NSString stringWithFormat: @"http://farm%@.static.flickr.com/%@/%@_%@_%@.%@", phfarm, server, unique, secret, format, kind];
-
-        return nil;
-}
 
 
 /**

@@ -191,6 +191,9 @@
 
 /*
  ** This takes in the current Contact managedObject and returns an NSArray that contains all the social media accounts sorted alphabetically according to the accountType.
+ 
+    Sorting is essential for NSSet to work properly.
+ 
     Possible accountTypes are: "Flickr", "Twitter" & "Website".
 */
 - (NSArray *) sortedSitesReturn

@@ -20,6 +20,7 @@
 
 @property FlickrAPI *flickrAPI;
 @property NSMutableArray *flickr_user_photos;
+@property NSString *userName;
 
 
 @end
@@ -38,11 +39,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.flickrAPI = [[FlickrAPI alloc] initWithAPIKey:USER_FLICKR_API_KEY];
     
+    self.flickrAPI = [[FlickrAPI alloc] initWithAPIKey:USER_FLICKR_API_KEY];
+    self.userName = [self.passedAccount valueForKey:@"identifier"];
     // Check if Flickr Data is already existing for the account.
+    
+    
     if([[self.passedAccount entries] count] == 0){
         [self loadFlickrData];
+    }
+    else{
+        self.flickr_user_photos = [[self sortedFeedsReturn] mutableCopy];
     }
 }
 
@@ -66,8 +73,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [self.flickr_user_photos[indexPath.row] valueForKey:@"title"];
+    TimelineEntry  *entry = [self.flickr_user_photos objectAtIndex:indexPath.row];
+    cell.textLabel.text = [entry valueForKeyPath:@"text"];
+    cell.detailTextLabel.text = [self.passedAccount identifier];
     return cell;
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -76,53 +86,21 @@
     // Save context.
     NSError *error;
     [self.context save:&error];
-    NSLog(@"Saved Flickr Data");
 }
+
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    FlickrImageViewController *fivc = [segue destinationViewController];
-    
-    fivc.flickrAPI = self.flickrAPI;
-    fivc.context = self.context;
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    
-    fivc.tempObject = [self.flickr_user_photos objectAtIndex:indexPath.row];
-
+  
 }
 
 
 - (void) loadFlickrData
 {
-    dispatch_queue_t background = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-
-    dispatch_async(background, ^{
-        UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
-        self.flickr_user_photos = [[self.flickrAPI photosForUserName:[self.passedAccount identifier]] mutableCopy];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
-            [self populateCoreData];
-            [self.tableView reloadData];
-        });
-    });
     
 }
 
-- (void) populateCoreData
-{
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TimelineEntry" inManagedObjectContext:self.context];
-    
-    for (NSDictionary *photo in self.flickr_user_photos)
-    {
-        TimelineEntry *entry = [[TimelineEntry alloc] initWithEntity:entity insertIntoManagedObjectContext:self.context];
-        entry.text = [photo valueForKey:@"title"];
-        entry.entryID = [photo valueForKey:@"id"];
-        
-        [self.passedAccount addEntriesObject:entry];
-    }
-    
-}
+
 
 /*
  The 'Entries' entity in the SocialMediaAccount object is a set. Before any manipulation can take place, it must first be sorted.
@@ -141,7 +119,7 @@
 }
 
 // Manual refreshing of Flickr Data.
-- (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender {
+/*- (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender {
     [self loadFlickrData];
-}
+}*/
 @end

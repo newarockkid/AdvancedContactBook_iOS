@@ -50,6 +50,8 @@
 		1948753D192DA15400EDC1A6 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1948753B192DA15400EDC1A6 /* Contact.m */; };
 		19487540192DA15400EDC1A6 /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1948753F192DA15400EDC1A6 /* TimelineEntry.m */; };
 		19487541192DA15400EDC1A6 /* TimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1948753F192DA15400EDC1A6 /* TimelineEntry.m */; };
+		19487544192DBADA00EDC1A6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19487543192DBADA00EDC1A6 /* MapViewController.m */; };
+		19487545192DBADA00EDC1A6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19487543192DBADA00EDC1A6 /* MapViewController.m */; };
 		196922AB192C9B46009E868A /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196922AA192C9B46009E868A /* WebsiteViewController.m */; };
 		196922AC192C9B46009E868A /* WebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196922AA192C9B46009E868A /* WebsiteViewController.m */; };
 		19885368192CA3FA00DDB028 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19885367192CA3FA00DDB028 /* FeedTableViewController.m */; };
@@ -130,6 +132,8 @@
 		1948753B192DA15400EDC1A6 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		1948753E192DA15400EDC1A6 /* TimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEntry.h; sourceTree = "<group>"; };
 		1948753F192DA15400EDC1A6 /* TimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEntry.m; sourceTree = "<group>"; };
+		19487542192DBADA00EDC1A6 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		19487543192DBADA00EDC1A6 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		196922A9192C9B46009E868A /* WebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebsiteViewController.h; sourceTree = "<group>"; };
 		196922AA192C9B46009E868A /* WebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebsiteViewController.m; sourceTree = "<group>"; };
 		19885366192CA3FA00DDB028 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedTableViewController.h; path = ../FeedTableViewController.h; sourceTree = "<group>"; };
@@ -243,6 +247,13 @@
 		191ABEF6192D9DBC00DF31DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				19CD3B8419283FAB00ADD677 /* Social.xcdatamodeld */,
+				1948753E192DA15400EDC1A6 /* TimelineEntry.h */,
+				1948753F192DA15400EDC1A6 /* TimelineEntry.m */,
+				1948753A192DA15400EDC1A6 /* Contact.h */,
+				1948753B192DA15400EDC1A6 /* Contact.m */,
+				19487536192DA15400EDC1A6 /* SocialMediaAccount.h */,
+				19487537192DA15400EDC1A6 /* SocialMediaAccount.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -264,13 +275,8 @@
 				191ABEEE192D82DF00DF31DD /* FlickrTableViewController.m */,
 				191ABEF1192D82EB00DF31DD /* FlickrImageViewController.h */,
 				191ABEF2192D82EB00DF31DD /* FlickrImageViewController.m */,
-				19CD3B8419283FAB00ADD677 /* Social.xcdatamodeld */,
-				1948753E192DA15400EDC1A6 /* TimelineEntry.h */,
-				1948753F192DA15400EDC1A6 /* TimelineEntry.m */,
-				1948753A192DA15400EDC1A6 /* Contact.h */,
-				1948753B192DA15400EDC1A6 /* Contact.m */,
-				19487536192DA15400EDC1A6 /* SocialMediaAccount.h */,
-				19487537192DA15400EDC1A6 /* SocialMediaAccount.m */,
+				19487542192DBADA00EDC1A6 /* MapViewController.h */,
+				19487543192DBADA00EDC1A6 /* MapViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				191ABEDB192D789800DF31DD /* STTwitterHTML.m in Sources */,
 				191ABED5192D789800DF31DD /* STHTTPRequest+STTwitter.m in Sources */,
 				191ABEE5192D789800DF31DD /* JSONSyntaxHighlight.m in Sources */,
+				19487544192DBADA00EDC1A6 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +503,7 @@
 				191ABEF4192D82EB00DF31DD /* FlickrImageViewController.m in Sources */,
 				19487541192DA15400EDC1A6 /* TimelineEntry.m in Sources */,
 				191ABEE4192D789800DF31DD /* BAVPlistNode.m in Sources */,
+				19487545192DBADA00EDC1A6 /* MapViewController.m in Sources */,
 				191ABEDA192D789800DF31DD /* STTwitterAppOnly.m in Sources */,
 				191ABED6192D789800DF31DD /* STHTTPRequest+STTwitter.m in Sources */,
 				191ABEE2192D789800DF31DD /* STTwitterOSRequest.m in Sources */,

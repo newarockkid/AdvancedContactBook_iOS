@@ -161,6 +161,23 @@
                                 <rect key="frame" x="20" y="368" width="280" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqY-wf-r3w">
+                                <rect key="frame" x="20" y="112" width="259" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKu-A1-BhW">
+                                <rect key="frame" x="237" y="108" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="View Map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hOB-1F-B5Y" kind="push" id="hfm-5J-DUh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     </view>
@@ -173,6 +190,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addSocialButtonPressed" destination="yrY-ZI-Hkm" id="ejf-41-V94"/>
+                        <outlet property="addressLabel" destination="RqY-wf-r3w" id="87k-Yw-18d"/>
                         <outlet property="firstNameField" destination="eBJ-dn-tcp" id="YIu-uJ-6b0"/>
                         <outlet property="imageURLField" destination="8Zh-Jt-ckH" id="r7h-yT-yvj"/>
                         <outlet property="imageView" destination="zh7-GE-Sak" id="c8H-EY-4AY"/>
@@ -185,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="205"/>
+            <point key="canvasLocation" x="94" y="193"/>
         </scene>
         <!--Feed Table View Controller - Timeline-->
         <scene sceneID="PK1-ph-B8s">
@@ -243,7 +261,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhotoCell" textLabel="jkz-ZI-PCH" style="IBUITableViewCellStyleDefault" id="wyy-Nk-JDj">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhotoCell" textLabel="jkz-ZI-PCH" detailTextLabel="C8t-Kp-zm5" style="IBUITableViewCellStyleSubtitle" id="wyy-Nk-JDj">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wyy-Nk-JDj" id="Rro-mp-Xyd">
@@ -251,9 +269,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jkz-ZI-PCH">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <rect key="frame" x="15" y="3" width="34" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C8t-Kp-zm5">
+                                            <rect key="frame" x="15" y="25" width="32" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -425,10 +450,10 @@
             </objects>
             <point key="canvasLocation" x="581" y="-552"/>
         </scene>
-        <!--View Controller - Map View-->
+        <!--Map View Controller - Map View-->
         <scene sceneID="xwF-Sw-eaM">
             <objects>
-                <viewController id="hOB-1F-B5Y" sceneMemberID="viewController">
+                <viewController id="hOB-1F-B5Y" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DIh-06-uUi"/>
                         <viewControllerLayoutGuide type="bottom" id="Oll-FG-Wxk"/>
@@ -446,11 +471,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hOB-1F-B5Y" id="XtP-Py-91C"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map View" id="FcY-fE-BUx"/>
+                    <connections>
+                        <outlet property="mapTextField" destination="082-Qs-HeJ" id="nuY-04-mDv"/>
+                        <outlet property="mapView" destination="IhX-XC-kBP" id="wsr-Ca-gzd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZs-xI-jSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

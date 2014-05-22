@@ -41,13 +41,12 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     
-    if(self.tempObject){
+    if(self.passedEntry){
         // Set up the image view.
         
-        self.navigationItem.title = [self.tempObject valueForKey:@"title"];
+        self.navigationItem.title = [self.passedEntry valueForKey:@"text"];
         
-        NSString *photoID = [self.tempObject valueForKey:@"id"];
-        
+        NSString *photoID = [self.passedEntry valueForKey:@"entryID"];
         NSArray *photoSizes = [self.flickrAPI photoSizes:photoID];
         NSDictionary *largestPhoto = [photoSizes objectAtIndex:3];
         NSURL *largestPhotoURL = [NSURL URLWithString:[largestPhoto valueForKey:@"source"]];

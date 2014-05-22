@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutlet UITextField *imageURLField;
 
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -66,7 +68,15 @@
     
     self.firstNameField.text = contact.firstName;
     self.lastNameField.text = contact.lastName;
-    //self.addressLabel.text = contact.address;
+    
+    if(contact.address)
+    {
+        self.addressLabel.text = contact.address;
+        
+    }
+    else{
+        self.addressLabel.text = @"Click View Map to enter address.";
+    }
     self.imageURLField.text = contact.imageURL;
     self.imageView.image = [UIImage imageWithData:contact.image];
 }
@@ -187,6 +197,8 @@
     [self.tableView reloadData];
 }
 
+- (IBAction)addressPressed:(id)sender {
+}
 
 
 /*

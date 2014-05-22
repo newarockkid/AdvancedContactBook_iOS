@@ -18,6 +18,6 @@
 
 @property NSManagedObjectContext *context;
 @property TimelineEntry *passedEntry;
-@property id tempObject;
+
 
 @end

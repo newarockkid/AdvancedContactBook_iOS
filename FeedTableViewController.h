@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SocialMediaAccount.h"
 
 @interface FeedTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property NSManagedObjectContext *context;
+
+@property SocialMediaAccount *passedAccount;
 
 @end

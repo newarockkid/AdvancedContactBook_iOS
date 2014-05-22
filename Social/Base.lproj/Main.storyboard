@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-490" y="241"/>
+            <point key="canvasLocation" x="-874" y="205"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -67,7 +67,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="241"/>
+            <point key="canvasLocation" x="-414" y="205"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -180,11 +180,12 @@
                         <outlet property="tableView" destination="2De-cv-7gY" id="FGv-eY-3u4"/>
                         <segue destination="RQE-3X-DeV" kind="push" identifier="showWebView" id="aRC-Ru-vRe"/>
                         <segue destination="E6K-ev-D7C" kind="push" identifier="showFeedView" id="Jv3-Nb-5Ct"/>
+                        <segue destination="cQa-C7-wpX" kind="push" identifier="showFlickrView" id="zXb-3I-q3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="241"/>
+            <point key="canvasLocation" x="49" y="205"/>
         </scene>
         <!--Feed Table View Controller - Timeline-->
         <scene sceneID="PK1-ph-B8s">
@@ -195,12 +196,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" id="ycj-5l-AFd">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" textLabel="lQ8-cO-Cat" style="IBUITableViewCellStyleDefault" id="ycj-5l-AFd">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ycj-5l-AFd" id="UAV-ZN-36r">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lQ8-cO-Cat">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -210,10 +220,79 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Timeline" id="4t1-Ba-dYi"/>
+                    <connections>
+                        <outlet property="tableView" destination="Cc9-fE-LrX" id="efv-dN-7cA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctL-Pz-lAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979" y="964"/>
+            <point key="canvasLocation" x="595" y="928"/>
+        </scene>
+        <!--Table View Controller - Flickr-->
+        <scene sceneID="jh9-qt-bwi">
+            <objects>
+                <tableViewController id="cQa-C7-wpX" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SPs-gp-NtB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PhotoCell" textLabel="jkz-ZI-PCH" style="IBUITableViewCellStyleDefault" id="wyy-Nk-JDj">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wyy-Nk-JDj" id="Rro-mp-Xyd">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jkz-ZI-PCH">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="gB4-5O-Fhq" kind="push" identifier="showImageView" id="mPl-N4-UvW"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cQa-C7-wpX" id="iF9-wc-Tbo"/>
+                            <outlet property="delegate" destination="cQa-C7-wpX" id="GOi-f8-5HD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Flickr" id="BWM-lT-6VP"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PDD-ar-LY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="595" y="1631"/>
+        </scene>
+        <!--View Controller - Photo Title-->
+        <scene sceneID="JRk-VW-U2G">
+            <objects>
+                <viewController id="gB4-5O-Fhq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4LN-NP-3YE"/>
+                        <viewControllerLayoutGuide type="bottom" id="nf6-bY-BRv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N36-qX-cIb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K43-sL-hph">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo Title" id="ooM-Ry-xta"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mss-r4-efh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="1631"/>
         </scene>
         <!--Website View Controller - Website-->
         <scene sceneID="82b-Sg-97T">
@@ -245,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggp-1p-SHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965" y="241"/>
+            <point key="canvasLocation" x="581" y="205"/>
         </scene>
         <!--Social Media Account View Controller - Add Social Media Account-->
         <scene sceneID="4DI-ld-beI">
@@ -329,7 +408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wy2-cO-p6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965" y="-516"/>
+            <point key="canvasLocation" x="581" y="-552"/>
         </scene>
         <!--View Controller - Map View-->
         <scene sceneID="xwF-Sw-eaM">
@@ -360,7 +439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZs-xI-jSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="-544"/>
+            <point key="canvasLocation" x="49" y="-580"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

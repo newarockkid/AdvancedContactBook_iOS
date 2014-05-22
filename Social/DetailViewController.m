@@ -128,7 +128,7 @@
     
     if([[social valueForKey:@"accountType"] isEqualToString:@"Website"]){
         NSLog(@"Website");
-        [self performSegueWithIdentifier:@"showWebView" sender:nil];
+        [self performSegueWithIdentifier:@"showWebView" sender:social];
         
     }
     else if([[social valueForKey:@"accountType"] isEqualToString:@"Twitter"]){
@@ -137,7 +137,7 @@
     }
     else if([[social valueForKey:@"accountType"] isEqualToString:@"Flickr"]){
         NSLog(@"Flickr Feed");
-        [self performSegueWithIdentifier:@"showFeedView" sender:social];
+        [self performSegueWithIdentifier:@"showFlickrView" sender:social];
     }
     
 }
@@ -157,15 +157,27 @@
     else if([[segue identifier] isEqualToString:@"showWebView"])
     {
         WebsiteViewController *wvc = [segue destinationViewController];
-        wvc.passedWebsiteURL = @"http://griffith.edu.au";
+        wvc.passedWebsiteURL = [sender valueForKey:@"identifier"];
     }
     
     else if ([[segue identifier] isEqualToString:@"showFeedView"])
     {
         FeedTableViewController *fvc = [segue destinationViewController];
+        fvc.passedAccount = sender;
+        fvc.context = self.context;
+       
         NSLog(@"Username: %@ , For Account Type:  %@", [sender valueForKey:@"identifier"], [sender valueForKey:@"accountType"]);
     }
     
+    else if ([[segue identifier] isEqualToString:@"showFlickrView"])
+    {
+        FeedTableViewController *fvc = [segue destinationViewController];
+        fvc.passedAccount = sender;
+        fvc.context = self.context;
+        
+        NSLog(@"Username: %@ , For Account Type:  %@", [sender valueForKey:@"identifier"], [sender valueForKey:@"accountType"]);
+    }
+
 }
 
 
@@ -195,7 +207,6 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    // Should do this in the MasterViewController. Call a delegate method for it.
     Contact *contact = self.detailItem;
     contact.firstName = self.firstNameField.text;
     contact.lastName = self.lastNameField.text;

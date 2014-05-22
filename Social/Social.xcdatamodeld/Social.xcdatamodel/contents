@@ -15,6 +15,7 @@
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimelineEntry" inverseName="account" inverseEntity="TimelineEntry" syncable="YES"/>
     </entity>
     <entity name="TimelineEntry" representedClassName="TimelineEntry" syncable="YES">
+        <attribute name="entryID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="siteData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,6 +24,6 @@
     <elements>
         <element name="Contact" positionX="-423" positionY="765" width="128" height="133"/>
         <element name="SocialMediaAccount" positionX="-396" positionY="983" width="128" height="105"/>
-        <element name="TimelineEntry" positionX="-189" positionY="936" width="128" height="103"/>
+        <element name="TimelineEntry" positionX="-189" positionY="936" width="128" height="118"/>
     </elements>
 </model>

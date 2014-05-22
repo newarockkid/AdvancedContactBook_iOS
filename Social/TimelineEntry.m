@@ -2,7 +2,7 @@
 //  TimelineEntry.m
 //  Social
 //
-//  Created by Nishant Shrestha on 21/05/2014.
+//  Created by Nishant Shrestha on 22/05/2014.
 //  Copyright (c) 2014 Nishant Shrestha. All rights reserved.
 //
 
@@ -12,6 +12,7 @@
 
 @implementation TimelineEntry
 
+@dynamic entryID;
 @dynamic image;
 @dynamic siteData;
 @dynamic text;

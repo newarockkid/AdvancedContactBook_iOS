@@ -74,6 +74,9 @@
 {
     // Add Flickr feed to the SocialMedia's Timeline Entries.
     // Save context.
+    NSError *error;
+    [self.context save:&error];
+    NSLog(@"Saved Flickr Data");
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -86,7 +89,6 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
     fivc.tempObject = [self.flickr_user_photos objectAtIndex:indexPath.row];
-    //NSEntityDescription *entity = [NSEntityDescription entityForName:@"TimelineEntry" inManagedObjectContext:self.context];
 
 }
 
@@ -94,17 +96,49 @@
 - (void) loadFlickrData
 {
     dispatch_queue_t background = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
     dispatch_async(background, ^{
         UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
         self.flickr_user_photos = [[self.flickrAPI photosForUserName:[self.passedAccount identifier]] mutableCopy];
         dispatch_async(dispatch_get_main_queue(), ^{
             UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+            [self populateCoreData];
             [self.tableView reloadData];
         });
     });
+    
 }
 
+- (void) populateCoreData
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TimelineEntry" inManagedObjectContext:self.context];
+    
+    for (NSDictionary *photo in self.flickr_user_photos)
+    {
+        TimelineEntry *entry = [[TimelineEntry alloc] initWithEntity:entity insertIntoManagedObjectContext:self.context];
+        entry.text = [photo valueForKey:@"title"];
+        entry.entryID = [photo valueForKey:@"id"];
+        
+        [self.passedAccount addEntriesObject:entry];
+    }
+    
+}
 
+/*
+ The 'Entries' entity in the SocialMediaAccount object is a set. Before any manipulation can take place, it must first be sorted.
+ This function sorts the NSSet according to the tweet's title/text.
+ */
+- (NSArray *) sortedFeedsReturn
+{
+    SocialMediaAccount *account = self.passedAccount;
+    
+    NSSet *feedSet = [account entries];
+    
+    NSSortDescriptor *nameSort = [[NSSortDescriptor alloc] initWithKey:@"text" ascending:YES];
+    NSArray *sortedFeeds = [feedSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameSort]];
+    
+    return sortedFeeds;
+}
 
 // Manual refreshing of Flickr Data.
 - (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender {

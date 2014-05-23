@@ -104,6 +104,29 @@
     return [[self.detailItem sites] count];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        NSArray *sortedSites = [self sortedSitesReturn];
+        
+        Contact *contact = self.detailItem;
+        SocialMediaAccount *deletingSocial = sortedSites[indexPath.row];
+        
+        [contact removeSitesObject:deletingSocial];
+        [self.tableView reloadData];
+        NSError *error = nil;
+        if (![self.context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
+
+
 #pragma mark - UITextField Delegate Method
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField

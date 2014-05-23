@@ -44,7 +44,7 @@
     [super viewDidLoad];
     
     // Initialise the account type to determine which framework to utilise.
-    // Currently can only be Twitter, but precaution for when Facebook and Weibo maybe added.
+    // Currently can only be Twitter, but can be changed for when Facebook or other social media is added.
     
     self.username = [self.passedAccount valueForKey:@"identifier"];
     self.accountType = [self.passedAccount valueForKey:@"accountType"];
@@ -98,7 +98,11 @@
 
 /* 
     This function uses the STTwitter framework.
-
+    Utilises the USER_TWITTER_API_KEY, USER_TWITTER_SECRET_KEY, MAX_TWEET_COUNT constants defined above.
+ 
+    For each 'feed' in the returned 'statuses' array, it creates a 'TimelineEntry' object, and adds it to the 'SocialMediaAccount' in the context.
+ 
+    This function does not deal with 'saving' the context.
  
  */
 - (void) getTimeLineForUser
@@ -142,13 +146,14 @@
 
 
 
-// Manually call reload if needed.
+// Manually call reload if desired.
 
 - (IBAction)reloadButtonPressed:(UIBarButtonItem *)sender {
     [self getTimeLineForUser];
 }
 
 
+// Save the context everytime the view is about to disappear.
 - (void) viewWillDisappear:(BOOL)animated
 {
     // Save context.

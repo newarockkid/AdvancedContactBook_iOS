@@ -63,6 +63,7 @@
 }
 
 
+// Function to set up the various UI elements of the view.
 - (void) configureView
 {
     Contact *contact = self.detailItem;
@@ -85,6 +86,7 @@
 
 #pragma mark - Table View Delegate Methods
 
+// Configure the cell based on the data returned from the database.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SocialCell"];
@@ -104,6 +106,8 @@
     return [[self.detailItem sites] count];
 }
 
+
+// Allow editing of the TableView that lists the SocialMediaAccount for the Contact.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -134,6 +138,7 @@
     if(textField == self.imageURLField){
         NSURL *imgURL = [NSURL URLWithString:self.imageURLField.text];
         
+        // Download the image in a 'background' queue, so that it does not cause the application to be unresponsive during image download.
         dispatch_queue_t background = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(background, ^{
             UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
@@ -161,6 +166,7 @@
     
     id social = sortedSites[indexPath.row];
     
+    // Perform the segue based on the type of 'SocialMediaAccount' that is selected.
     if([[social valueForKey:@"accountType"] isEqualToString:@"Website"]){
         NSLog(@"Website");
         [self performSegueWithIdentifier:@"showWebView" sender:social];
@@ -182,6 +188,7 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    // Segue to add a new social account.
     if([[segue identifier] isEqualToString:@"addSocial"])
     {
         SocialMediaAccountViewController *svc = [segue destinationViewController];
@@ -189,12 +196,14 @@
         svc.passedContact = self.detailItem;
     }
     
+    // Segue to show the 'Contact's webpage.
     else if([[segue identifier] isEqualToString:@"showWebView"])
     {
         WebsiteViewController *wvc = [segue destinationViewController];
         wvc.passedWebsiteURL = [sender valueForKey:@"identifier"];
     }
     
+    // Segue to show 'Contact's Twitter Feed.
     else if ([[segue identifier] isEqualToString:@"showFeedView"])
     {
         FeedTableViewController *fvc = [segue destinationViewController];
@@ -204,6 +213,7 @@
         NSLog(@"Username: %@ , For Account Type:  %@", [sender valueForKey:@"identifier"], [sender valueForKey:@"accountType"]);
     }
     
+    // Segue to show 'Contact's Flickr Feed.
     else if ([[segue identifier] isEqualToString:@"showFlickrView"])
     {
         FlickrTableViewController *fvc = [segue destinationViewController];
@@ -213,6 +223,7 @@
         NSLog(@"Username: %@ , For Account Type:  %@", [sender valueForKey:@"identifier"], [sender valueForKey:@"accountType"]);
     }
     
+    // Segue to show 'Contact's address in a mapView.
     else if([[segue identifier] isEqualToString:@"showMapView"])
     {
         MapViewController *mvc = [segue destinationViewController];
@@ -222,7 +233,7 @@
 
 }
 
-
+// Configure the view controller, when it is about to appear.
 - (void) viewWillAppear:(BOOL)animated
 {
     [self configureView];
@@ -251,12 +262,12 @@
 }
 
 
+// Save the context whenever the view will disappear.
 - (void) viewWillDisappear:(BOOL)animated
 {
     Contact *contact = self.detailItem;
     contact.firstName = self.firstNameField.text;
     contact.lastName = self.lastNameField.text;
-    //contact.address = self.addressLabel.text;
     contact.imageURL = self.imageURLField.text;
     contact.image = self.tempImageData;
     

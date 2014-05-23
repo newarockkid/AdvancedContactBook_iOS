@@ -36,14 +36,16 @@
     return self;
 }
 
+
+// Initialise the flickrAPI as required.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.flickrAPI = [[FlickrAPI alloc] initWithAPIKey:USER_FLICKR_API_KEY];
     self.userName = [self.passedAccount valueForKey:@"identifier"];
+
     // Check if Flickr Data is already existing for the account.
-    
     
     if([[self.passedAccount entries] count] == 0){
         [self loadFlickrData];

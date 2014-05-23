@@ -24,7 +24,9 @@
         return self;
 }
 
-
+/**
+ * Uses the FlickrAPI's getInterestingness method to get an array of 'interesting' photos.
+*/
 - (NSMutableArray *) latestPhotos
 {
         NSString *request = [NSString stringWithFormat: @"https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=%@&per_page=%ld&format=json&nojsoncallback=1", self.apiKey, (long) self.maximumResults];
@@ -60,8 +62,14 @@
 
 
 
-// Added to function with the new Flickr API
+// Added new functions to work with the new Flickr API
 
+
+/**
+ * @param userName: The username of the user who's photos are to be retrieved.
+ * Returns an NSArray of photos for the passed userName.
+ 
+ */
 - (NSArray *) photosForUserName: (NSString *) userName
 {
     NSString *request = [NSString stringWithFormat: @"https://api.flickr.com/services/rest/?method=flickr.people.findByUsername&api_key=%@&username=%@&format=json&nojsoncallback=1", self.apiKey, userName];
@@ -77,6 +85,11 @@
     result = [self fetch: request];
     return [result valueForKeyPath: @"photos.photo"];
 }
+
+/**
+ * @param photoID: The photoID of the photo who's URL is to be retireved.
+ * Returns a NSMutableArray that contains all sizes of the photo with the id:photoID.
+ */
 
 - (NSMutableArray *) photoSizes: (NSString *) photoID
 {

@@ -54,6 +54,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    // Return number of 'Contacts' in the database.
+
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
@@ -206,16 +208,12 @@
     [self.tableView endUpdates];
 }
 
-/*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    // In the simplest, most efficient, case, reload the table view.
-    [self.tableView reloadData];
-}
- */
 
+/**
+ * Configures the cell at the indexPath.
+ * This gets called from the table view's delegate method, cellForRowAtIndexPath.
+ * 'Contact' object at the 'indexPath' is grabbed from the database and the TableViewCell is configured accordingly.
+*/
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Contact *contact= [self.fetchedResultsController objectAtIndexPath:indexPath];

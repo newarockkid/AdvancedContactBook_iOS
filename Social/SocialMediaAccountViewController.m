@@ -40,7 +40,7 @@
     // Initialise the managedObjectContext and SocialMediaAccount objects.
 }
 
-
+// Function that deals with adding new 'SocialMediaAccount' object(s) to the context.
 - (IBAction)addAccountsButtonPressed:(id)sender {
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"SocialMediaAccount" inManagedObjectContext:self.context];
@@ -62,6 +62,7 @@
     
     NSMutableSet *mutableSites = [[NSMutableSet alloc] init];
     
+    // Only add the SocialMediaAccounts that are NOT empty strings.
     if(![self.flickrField.text isEqualToString:@""]){
         [mutableSites addObject:flickr];
     }
@@ -72,6 +73,7 @@
         [mutableSites addObject:website];
     }
     
+    // Add the NSSet containing the SocialMediaAccount(s).
     [contact addSites:mutableSites];
     
     NSError *error;
@@ -79,7 +81,7 @@
 }
 
 
-
+// TextField Delegate Method.
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];

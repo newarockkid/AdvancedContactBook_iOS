@@ -38,6 +38,7 @@
 }
 
 
+// Set up the view controller and load the website when the view is about to appear.
 - (void) viewWillAppear:(BOOL)animated
 {
     if(![self.passedWebsiteURL isEqualToString: @""]){
@@ -48,6 +49,9 @@
 }
 
 
+#pragma  mark - UIWebView delegate methods
+
+// Following methods take care of the 'networkActivityIndicator' as required.
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
@@ -57,15 +61,6 @@
 {
     UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
